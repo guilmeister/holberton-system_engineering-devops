@@ -1,2 +1,2 @@
 #!/bin/bash
-chown -R ug+x
+chown betty:holberton
