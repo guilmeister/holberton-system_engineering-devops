@@ -1,2 +1,2 @@
 #!/bin/bash
-usermod id betty
+usermod -l id betty
