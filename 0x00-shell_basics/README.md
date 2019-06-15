@@ -1,0 +1,1 @@
+This directory is for practicing Shell basics
