@@ -1,0 +1,2 @@
+#!/bin/bang
+mv src/*[A-Z]* /tmp/u
