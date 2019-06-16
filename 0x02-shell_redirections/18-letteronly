@@ -1,2 +1,2 @@
 #!/bin/bash
-grep [:upper:]* /etc/ssh/sshd_config | grep [:lower:]* /etc/ssh/sshd_config
+grep -o [:upper:]* /etc/ssh/sshd_config | grep -o [:lower:]* /etc/ssh/sshd_config
