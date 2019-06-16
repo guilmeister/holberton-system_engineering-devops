@@ -1,2 +1,2 @@
 #!/bin/bash
-grep ".js" | rm
+find . -type d | grep ".js" | rm
