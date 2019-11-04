@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#Kill process highlander script
+kill -9 "$(ps aux | pgrep -f 7-highlander)"
