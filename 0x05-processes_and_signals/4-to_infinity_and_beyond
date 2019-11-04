@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#Infinity echo until interupt signal
+x=0
+while [ $x -lt 1 ]
+do
+    echo "To infinity and beyond"
+    sleep 2
+done
