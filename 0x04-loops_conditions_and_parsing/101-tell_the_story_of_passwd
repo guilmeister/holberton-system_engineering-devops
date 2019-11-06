@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#Printing flags using IFS
+
+while IFS=: read -r USER PASS f3 G_ID INFO HOME_D CMD
+do
+    echo "The user $USER is part of the $G_ID gang, lives in $HOME_D and rides $CMD. $G_ID's place is protected by the passcode $PASS, more info about the user here: $INFO"
+done < /etc/passwd
