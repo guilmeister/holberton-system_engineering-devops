@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #Script that configures a server to the above requirements
 sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
-pkill -f -1 nginx
+pkill -1 nginx
