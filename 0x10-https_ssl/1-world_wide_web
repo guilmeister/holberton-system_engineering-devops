@@ -1,24 +1,25 @@
 #!/usr/bin/env bash
 #Configure your domain zone so the subdomain www points to your load-balancer IP
 
-functions () {
+functions ()
+{
     if [ "$#" == 1 ]
     then
-	wwwname="$(dig www."$1" | grep -A1 'ANSWER SECTION:' | awk '{ print $1 }' | tr -d '\n' | cut -f1 -d '.' | sed 's/..//')"
-	wwwrecordtype="$(dig www."$1" | grep -A1 'ANSWER SECTION:' | awk '{ print $4 }' | tr -d '\n')"
-	wwwdestination="$(dig www."$1" | grep -A1 'ANSWER SECTION:' | awk '{ print $5 }' | tr -d '\n')"
+	wwwname="$(dig "www.$1" | grep -A1 'ANSWER SECTION:' | awk '{ print $1 }' | tr -d '\n' | cut -f1 -d '.' | sed 's/..//')"
+	wwwrecordtype="$(dig "www.$1" | grep -A1 'ANSWER SECTION:' | awk '{ print $4 }' | tr -d '\n')"
+	wwwdestination="$(dig "www.$1" | grep -A1 'ANSWER SECTION:' | awk '{ print $5 }' | tr -d '\n')"
 	echo "The subdomain $wwwname is a $wwwrecordtype record and points to $wwwdestination";
-	lb01name="$(dig lb-01."$1" | grep -A1 'ANSWER SECTION:' | awk '{ print $1 }' | cut -f1 -d '.' | tr -d '\n' | sed 's/..//')"
-	lb01recordtype="$(dig lb-01."$1" | grep -A1 'ANSWER SECTION:' | awk '{ print $4 }' | tr -d '\n')"
-	lb01destination="$(dig lb-01."$1" | grep -A1 'ANSWER SECTION:' | awk '{ print $5}' | tr -d '\n')"
+	lb01name="$(dig "lb-01.$1" | grep -A1 'ANSWER SECTION:' | awk '{ print $1 }' | cut -f1 -d '.' | tr -d '\n' | sed 's/..//')"
+	lb01recordtype="$(dig "lb-01.$1" | grep -A1 'ANSWER SECTION:' | awk '{ print $4 }' | tr -d '\n')"
+	lb01destination="$(dig "lb-01.$1" | grep -A1 'ANSWER SECTION:' | awk '{ print $5}' | tr -d '\n')"
 	echo "The subdomain $lb01name is a $lb01recordtype record and points to $lb01destination"
-	web01name="$(dig web-01."$1" | grep -A1 'ANSWER SECTION:' | awk '{ print $1}' | tr -d '\n' | cut -f1 -d '.' | sed 's/..//')"
-	web01recordtype="$(dig web-01."$1" | grep -A1 'ANSWER SECTION:' | awk '{ print $4 }' | tr -d '\n')"
-	web01destination="$(dig web-01."$1" | grep -A1 'ANSWER SECTION:' | awk '{ print $5 }' | tr -d '\n')"
+	web01name="$(dig "web-01.$1" | grep -A1 'ANSWER SECTION:' | awk '{ print $1}' | tr -d '\n' | cut -f1 -d '.' | sed 's/..//')"
+	web01recordtype="$(dig "web-01.$1" | grep -A1 'ANSWER SECTION:' | awk '{ print $4 }' | tr -d '\n')"
+	web01destination="$(dig "web-01.$1" | grep -A1 'ANSWER SECTION:' | awk '{ print $5 }' | tr -d '\n')"
 	echo "The subdomain $web01name is a $web01recordtype record and points to $web01destination"
-	web02name="$(dig web-02."$1" | grep -A1 'ANSWER SECTION:' | awk '{ print $1}' | tr -d '\n' | cut -f1 -d '.' | sed 's/..//')"
-	web02recordtype="$(dig web-02."$1" | grep -A1 'ANSWER SECTION:' | awk '{ print $4 }' | tr -d '\n')"
-	web02destination="$(dig web-02."$1" | grep -A1 'ANSWER SECTION:' | awk '{ print $5 }' | tr -d '\n')"
+	web02name="$(dig "web-02.$1" | grep -A1 'ANSWER SECTION:' | awk '{ print $1}' | tr -d '\n' | cut -f1 -d '.' | sed 's/..//')"
+	web02recordtype="$(dig "web-02.$1" | grep -A1 'ANSWER SECTION:' | awk '{ print $4 }' | tr -d '\n')"
+	web02destination="$(dig "web-02.$1" | grep -A1 'ANSWER SECTION:' | awk '{ print $5 }' | tr -d '\n')"
 	echo "The subdomain $web02name is a $web02recordtype record and points to $web02destination"
     elif [ "$#" == 2 ]
     then
