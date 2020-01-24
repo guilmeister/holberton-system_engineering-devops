@@ -40,7 +40,7 @@ skip-external-locking
 #
 # Instead of skip-networking the default is now to listen only on
 # localhost which is more compatible and is not less secure.
-bind-address            = 127.0.0.1
+#bind-address           = 127.0.0.1
 #
 # * Fine Tuning
 #
@@ -55,6 +55,7 @@ myisam-recover-options  = BACKUP
 #table_cache            = 64
 #thread_concurrency     = 10
 #
+# * Query Cache Configuration
 #
 query_cache_limit       = 1M
 query_cache_size        = 16M
@@ -70,6 +71,7 @@ query_cache_size        = 16M
 # Error log - should be very few entries.
 #
 log_error = /var/log/mysql/error.log
+#
 # Here you can see queries with especially long duration
 #log_slow_queries       = /var/log/mysql/mysql-slow.log
 #long_query_time = 2
@@ -82,7 +84,7 @@ server-id               = 2
 log_bin                 = /var/log/mysql/mysql-bin.log
 expire_logs_days        = 10
 max_binlog_size   = 100M
-#binlog_do_db           = include_database_name
+binlog_do_db            = tyrell_corp
 #binlog_ignore_db       = include_database_name
 #
 # * InnoDB
