@@ -15,8 +15,6 @@ if __name__ == "__main__":
     name = users.json().get('username')
     todos = requests.get(url + 'todos')
     todo = todos.json()
-    completed_tasks = 0
-    total_tasks = 0
     new_dict = {sys.argv[1]: []}
 
     for t in todo:
