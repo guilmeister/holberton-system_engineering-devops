@@ -29,4 +29,4 @@ if __name__ == "__main__":
 
     for t in todo:
         if (t.get('userId') == int(sys.argv[1]) and t.get('completed')):
-            print('     ' + t.get('title'))
+            print('\t ' + t.get('title'))
