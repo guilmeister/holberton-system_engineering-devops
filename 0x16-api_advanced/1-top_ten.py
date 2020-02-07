@@ -4,7 +4,7 @@
 import requests
 
 
-def number_of_subscribers(subreddit):
+def top_ten(subreddit):
     """
     Function that queries the Reddit API and returns
     the number of subscribers (not active users, total subscribers)
@@ -13,8 +13,9 @@ def number_of_subscribers(subreddit):
     try:
         url = 'https://www.reddit.com/r/'
         headers = {'User-Agent': 'Mozilla/5.0'}
-        req = requests.get(url + '{}/about.json'.format(subreddit),
+        req = requests.get(url + '{}/hot.json?limit=10'.format(subreddit),
                            headers=headers)
-        return req.json().get('data').get('subscribers')
+        for titles in req.json().get('data').get('children'):
+            print(titles.get('data').get('title', None))
     except:
-        return 0
+        print('None')
