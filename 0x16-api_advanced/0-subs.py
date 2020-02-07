@@ -11,7 +11,9 @@ def number_of_subscribers(subreddit):
     for a given subreddit
     """
     url = 'https://www.reddit.com/r/'
-    req = requests.get(url + '{}/about.json'.format(subreddit))
+    headers = {'User-Agent': 'Mozilla/5.0'}
+    req = requests.get(url + '{}/about.json'.format(subreddit),
+                       headers=headers)
     if req:
         return req.json().get('data').get('subscribers')
     else:
